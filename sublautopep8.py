@@ -8,17 +8,8 @@ import sublime
 import sublime_plugin
 
 if int(sublime.version()) > 3000:
-    import sys
     from io import StringIO
-    from imp import reload
-
-    try:
-        from AutoPEP8.sublimeautopep8lib import autopep8
-    except ImportError:
-        sys.path.append(os.path.join(sublime.packages_path(), 'AutoPep8', 'sublimeautopep8lib'))
-        autopep8 = __import__('autopep8')
-        reload(autopep8)
-        del sys.path[-1]
+    import AutoPEP8.sublimeautopep8lib.autopep8 as autopep8
 else:
     from StringIO import StringIO
     import sublimeautopep8lib.autopep8 as autopep8

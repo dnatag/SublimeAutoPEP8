@@ -44,14 +44,7 @@ import tempfile
 
 import sublime
 if int(sublime.version()) > 3000:
-    try:
-        import AutoPEP8.sublimeautopep8lib.pep8 as pep8_module
-    except ImportError:
-        sys.path.append(os.path.join(sublime.packages_path(), 'AutoPEP8', 'sublimeautopep8lib'))
-        pep8_module = __import__('pep8')
-        from imp import reload
-        reload(pep8_module)
-        del sys.path[-1]
+    import AutoPEP8.sublimeautopep8lib.pep8 as pep8_module
 else:
     import sublimeautopep8lib.pep8 as pep8_module
 
